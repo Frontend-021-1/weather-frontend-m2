@@ -34,7 +34,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
+      <div class="container">
         <a class="navbar-brand" href="./index.html">El Tiempo</a>
         <button
           class="navbar-toggler"
@@ -48,14 +48,15 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <!-- ms-auto para que links se muestren a la derecha -->
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="./index.html"
                 >Inicio</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Detalle</a>
+              <a class="nav-link" href="./detalle.html">Detalle</a>
             </li>
           </ul>
         </div>
@@ -66,6 +67,7 @@
     <main class="container my-4">
       <h1 class="text-center">Reporte del tiempo en Chile</h1>
       <div class="row row-cols-1 row-cols-md-4 row-cols-lg-6 g-4">
+        <!-- Tarjeta principal start -->
         <div class="col">
           <div class="card text-center">
             <i class="bi bi-brightness-high"></i>
@@ -75,7 +77,86 @@
               <p class="card-text">Soleado</p>
             </div>
             <div class="card-body">
-              <a href="#" class="card-link">Ver detalle</a>
+              <a href="./detalle.html" class="card-link">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+        <!-- Tarjeta principal end -->
+        <div class="col">
+          <div class="card text-center">
+            <i class="bi bi-cloud-lightning-rain"></i>
+            <div class="card-body">
+              <h5 class="card-title">Puerto Natales</h5>
+              <p class="card-text">11°C</p>
+              <p class="card-text">Lluvia torrencial</p>
+            </div>
+            <div class="card-body">
+              <a href="./detalle.html" class="card-link">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <i class="bi bi-cloud-sun"></i>
+            <div class="card-body">
+              <h5 class="card-title">Concepción</h5>
+              <p class="card-text">16°C</p>
+              <p class="card-text">Nubosidad parcial</p>
+            </div>
+            <div class="card-body">
+              <a href="./detalle.html" class="card-link">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <i class="bi bi-brightness-high"></i>
+            <div class="card-body">
+              <h5 class="card-title">Santiago</h5>
+              <p class="card-text">30°C</p>
+              <p class="card-text">Soleado</p>
+            </div>
+            <div class="card-body">
+              <a href="./detalle.html" class="card-link">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <i class="bi bi-brightness-high"></i>
+            <div class="card-body">
+              <h5 class="card-title">Santiago</h5>
+              <p class="card-text">30°C</p>
+              <p class="card-text">Soleado</p>
+            </div>
+            <div class="card-body">
+              <a href="./detalle.html" class="card-link">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <i class="bi bi-brightness-high"></i>
+            <div class="card-body">
+              <h5 class="card-title">Santiago</h5>
+              <p class="card-text">30°C</p>
+              <p class="card-text">Soleado</p>
+            </div>
+            <div class="card-body">
+              <a href="./detalle.html" class="card-link">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <i class="bi bi-brightness-high"></i>
+            <div class="card-body">
+              <h5 class="card-title">Santiago</h5>
+              <p class="card-text">30°C</p>
+              <p class="card-text">Soleado</p>
+            </div>
+            <div class="card-body">
+              <a href="./detalle.html" class="card-link">Ver detalle</a>
             </div>
           </div>
         </div>
@@ -84,6 +165,20 @@
     <!-- Grilla de localidades end -->
 
     <!-- Footer -->
-    <footer></footer>
+    <footer class="container py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="./index.html" class="nav-link px-2 text-body-secondary"
+            >Inicio</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="./detalle.html" class="nav-link px-2 text-body-secondary"
+            >Detalle</a
+          >
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">© 2025 Bootcamp Front End</p>
+    </footer>
   </body>
 </html>
