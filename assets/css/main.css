@@ -18,6 +18,9 @@ a {
   color: #001d3d;
 }
 
+.card {
+  overflow: hidden;
+}
 .card__icon {
   font-size: 40px;
   color: #ffd60a;
