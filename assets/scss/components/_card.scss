@@ -1,5 +1,8 @@
+@use '../abstracts/variables';
+
 .card {
   &__icon {
     font-size: 40px;
+    color: variables.$weather-gold;
   }
 }
