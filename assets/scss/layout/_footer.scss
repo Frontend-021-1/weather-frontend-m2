@@ -1,0 +1,14 @@
+@use '../abstracts/mixins';
+@use '../abstracts/variables';
+
+.footer {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  .navigation {
+    @include mixins.flex-layout-center;
+    &__item {
+      color: variables.$weather-blue;
+    }
+  }
+}
