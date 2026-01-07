@@ -1,3 +1,5 @@
+import lugares from './lugares.js';
+
 // QuerySelectorAll selecciona todos los elementos. En este caso todos los que tienen clase nav-link
 var links = document.querySelectorAll('.nav-link');
 
