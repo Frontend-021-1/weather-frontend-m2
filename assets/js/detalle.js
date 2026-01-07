@@ -79,6 +79,18 @@ const mostrarLugar = () => {
 
 mostrarLugar();
 
-// TODO: mostrar sección de pronóstico semanal
+// Mostrar sección de pronóstico semanal
+const pronosticoContainer = document.getElementById('pronosticoSemanal');
+console.log(ciudadActual.pronosticoSemanal);
+ciudadActual.pronosticoSemanal.forEach((dia) => {
+  const content = `
+              <li class="list-group-item">
+                <i class="bi ${ICONOS[dia.estado]}"></i> ${dia.dia}: ${
+    dia.max
+  }°C
+              </li>
+  `;
+  pronosticoContainer.innerHTML += content;
+});
 
 // TODO: mostrar estadísticas de la semana
