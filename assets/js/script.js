@@ -36,7 +36,7 @@ const mostrarLugares = () => {
   lugares.forEach((lugar) => {
     const tarjeta = `
         <div class="col">
-          <div class="card text-center">
+          <div class="card h-100 text-center">
             <i class="bi ${ICONOS[lugar.estadoActual]} card__icon"></i>
             <div class="card-body">
               <h5 class="card-title">${lugar.nombre}</h5>
@@ -57,5 +57,3 @@ const mostrarLugares = () => {
 };
 
 mostrarLugares();
-// console.log(lugares);
-// TODO: hacer sumas de temperaturas, promedios, mínimos y máximos
