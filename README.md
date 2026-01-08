@@ -46,12 +46,12 @@ links.forEach(function (link) {
 ### Variables, condicionales, ciclos y funciones
 
 - [x] Utilizar variables y constantes para guardar datos intermedios (suma de temperaturas, contadores, etc.).
-- [] Utilizar ciclos (for, while o similar) para recorrer el pronóstico semanal y:
+- [ ] Utilizar ciclos (for, while o similar) para recorrer el pronóstico semanal y:
   - [x] Calcular mínimo, máximo y promedio:
-  - [] Contar cuántos días hay de cada tipo de clima.
-- [] Utilizar condicionales (if, else if, else) para:
-  - [] Evaluar estados del tiempo (ej.: si hay más días soleados que nublados → “Semana mayormente soleada”).
-  - [] Generar el resumen textual de la semana.
-- [] Definir al menos dos funciones:
+  - [ ] Contar cuántos días hay de cada tipo de clima.
+- [ ] Utilizar condicionales (if, else if, else) para:
+  - [ ] Evaluar estados del tiempo (ej.: si hay más días soleados que nublados → “Semana mayormente soleada”).
+  - [ ] Generar el resumen textual de la semana.
+- [ ] Definir al menos dos funciones:
   - [x] Una función para buscar y obtener el objeto lugar a partir de un id o nombre.
-  - [] Una función para calcular estadísticas a partir del pronosticoSemanal de un lugar y devolver un objeto con los resultados.
+  - [ ] Una función para calcular estadísticas a partir del pronosticoSemanal de un lugar y devolver un objeto con los resultados.
