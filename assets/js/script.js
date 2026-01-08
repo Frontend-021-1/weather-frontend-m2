@@ -44,7 +44,7 @@ const mostrarLugares = () => {
               <p class="card-text">${lugar.estadoActual}</p>
             </div>
             <div class="card-body">
-              <a class="card-link" href="/detalle.html?id=${
+              <a class="card-link" href="./detalle.html?id=${
                 lugar.id
               }">Ver detalle</a>
             </div>
