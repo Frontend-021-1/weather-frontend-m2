@@ -39,9 +39,9 @@ links.forEach(function (link) {
 
 ### Modelado de datos
 
-[x] - Definir en JavaScript un arreglo de lugares donde cada lugar sea un objeto con al menos:
-[x] - id, nombre, tempActual, estadoActual
-[x] - pronosticoSemanal: arreglo de objetos (cada objeto será un día de la semana) con dia, min, max y estado
+- [x] Definir en JavaScript un arreglo de lugares donde cada lugar sea un objeto con al menos:
+- [x] id, nombre, tempActual, estadoActual
+- [x] pronosticoSemanal: arreglo de objetos (cada objeto será un día de la semana) con dia, min, max y estado
 
 ### Variables, condicionales, ciclos y funciones
 
