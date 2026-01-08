@@ -94,3 +94,56 @@ ciudadActual.pronosticoSemanal.forEach((dia) => {
 });
 
 // TODO: mostrar estadísticas de la semana
+// 5. Obtener estadísticas semanales y resumir datos
+
+// 5.1 Capturar elementos de la tabla (td -> table datacell)
+const minTempContainer = document.getElementById('minTemp');
+const maxTempContainer = document.getElementById('maxTemp');
+const avTempContainer = document.getElementById('avTemp');
+
+// Función para formatear Números decimales, que en vez de puntos tengan comas
+const formatFloatNumber = (num) => {
+  return num.toLocaleString('es-CL');
+};
+
+// 5.2 Función para calcular estadísticas, devolverá un objeto con los resultados
+const estadisticasPronostico = () => {
+  // 5.2.1 Obtener temperatura mínima semanal
+  const temperaturasMinimas = ciudadActual.pronosticoSemanal.map(
+    (dia) => dia.min
+  );
+  // console.log(temperaturasMinimas);
+  const minimaSemanal = Math.min(...temperaturasMinimas);
+  console.log(minimaSemanal);
+
+  // 5.2.2 Obtener temperatura máxima semanal
+  const temperaturasMaximas = ciudadActual.pronosticoSemanal.map(
+    (dia) => dia.max
+  );
+  const maximaSemanal = Math.max(...temperaturasMaximas);
+
+  // 5.2.3 Calcular promedio de temperaturas semanal
+  const sumaTemperaturasMaximas = temperaturasMaximas.reduce(
+    (acumulador, actual) => acumulador + actual,
+    0
+  );
+
+  // promedio = sumaElementos / cantidadElementos
+  let promedioSemanal = parseFloat(
+    (sumaTemperaturasMaximas / temperaturasMaximas.length).toFixed(2)
+  );
+
+  // TODO: crear mensaje resumen de las estadísticas: cantidad de días por tipo de clima, resumen textual (Semana mayormente soleada, nublada, etc)
+
+  return {
+    minimaSemanal,
+    maximaSemanal,
+    promedioSemanal: formatFloatNumber(promedioSemanal),
+  };
+};
+
+const estadisticas = estadisticasPronostico();
+
+minTempContainer.textContent = estadisticas.minimaSemanal;
+maxTempContainer.textContent = estadisticas.maximaSemanal;
+avTempContainer.textContent = estadisticas.promedioSemanal;
