@@ -81,7 +81,7 @@ mostrarLugar();
 
 // Mostrar sección de pronóstico semanal
 const pronosticoContainer = document.getElementById('pronosticoSemanal');
-console.log(ciudadActual.pronosticoSemanal);
+// console.log(ciudadActual.pronosticoSemanal);
 ciudadActual.pronosticoSemanal.forEach((dia) => {
   const content = `
               <li class="list-group-item">
@@ -104,6 +104,40 @@ const avTempContainer = document.getElementById('avTemp');
 // Función para formatear Números decimales, que en vez de puntos tengan comas
 const formatFloatNumber = (num) => {
   return num.toLocaleString('es-CL');
+};
+
+const definirEstadoPredominante = (conteoEstados) => {
+  let estadoPredominante;
+
+  if (
+    conteoEstados.Soleado > conteoEstados.Nublado &&
+    conteoEstados.Soleado > conteoEstados.Lluvioso &&
+    conteoEstados.Soleado > conteoEstados['Parcialmente nublado']
+  ) {
+    estadoPredominante = 'Soleado';
+  } else if (
+    conteoEstados.Nublado > conteoEstados.Soleado &&
+    conteoEstados.Nublado > conteoEstados.Lluvioso &&
+    conteoEstados.Nublado > conteoEstados['Parcialmente nublado']
+  ) {
+    estadoPredominante = 'Nublado';
+  } else if (
+    conteoEstados.Lluvioso > conteoEstados.Soleado &&
+    conteoEstados.Lluvioso > conteoEstados.Nublado &&
+    conteoEstados.Lluvioso > conteoEstados['Parcialmente nublado']
+  ) {
+    estadoPredominante = 'Lluvioso';
+  } else if (
+    conteoEstados['Parcialmente nublado'] > conteoEstados.Soleado &&
+    conteoEstados['Parcialmente nublado'] > conteoEstados.Nublado &&
+    conteoEstados['Parcialmente nublado'] > conteoEstados.Lluvioso
+  ) {
+    estadoPredominante = 'Parcialmente Nublado';
+  } else {
+    estadoPredominante = 'variado';
+  }
+
+  return estadoPredominante;
 };
 
 // 5.2 Función para calcular estadísticas, devolverá un objeto con los resultados
@@ -134,11 +168,33 @@ const estadisticasPronostico = () => {
   );
 
   // TODO: crear mensaje resumen de las estadísticas: cantidad de días por tipo de clima, resumen textual (Semana mayormente soleada, nublada, etc)
+  // 5.2.4 Calcular conteo de días por estado del clima
+  const estadosSemanal = ciudadActual.pronosticoSemanal.map(
+    (dia) => dia.estado
+  );
+
+  // console.log(estadosSemanal);
+  const estadosUnicos = [...new Set(estadosSemanal)];
+  // console.log(estadosUnicos);
+
+  const conteoEstados = {};
+
+  estadosUnicos.forEach((estado) => {
+    conteoEstados[estado] = ciudadActual.pronosticoSemanal.filter(
+      (dia) => dia.estado === estado
+    ).length;
+    // console.log(conteoEstados);
+  });
+
+  // 5.2.5 Determinar estado predominante (el más frecuente) de la semana
+  const estadoPredominante = definirEstadoPredominante(conteoEstados);
 
   return {
     minimaSemanal,
     maximaSemanal,
     promedioSemanal: formatFloatNumber(promedioSemanal),
+    conteoEstados,
+    estadoPredominante,
   };
 };
 
@@ -147,3 +203,32 @@ const estadisticas = estadisticasPronostico();
 minTempContainer.textContent = estadisticas.minimaSemanal;
 maxTempContainer.textContent = estadisticas.maximaSemanal;
 avTempContainer.textContent = estadisticas.promedioSemanal;
+
+console.log(estadisticas);
+
+// 5.2.6 Crear resumen textual
+const generarMensajeResumen = (estado, tempMax, tempMin) => {
+  return `Semana con clima mayormente ${estado}. La temperatura máxima de la semana fue ${tempMax}°C, la mínima de ${tempMin}°C.`;
+};
+
+const mensajeResumen = generarMensajeResumen(
+  estadisticas.estadoPredominante,
+  estadisticas.maximaSemanal,
+  estadisticas.minimaSemanal
+);
+console.log(mensajeResumen);
+
+const containerMensajeResumen = document.getElementById('resumen');
+
+containerMensajeResumen.innerHTML = `<p class="text-muted">${mensajeResumen}</p>`;
+
+const encabezadosTablaEstadistica = document.getElementById(
+  'titulosEstadisticas'
+);
+const contenidoTablaEstadistica = document.getElementById('filaEstadistica');
+
+// Ocupar conteo de estados de la función estadisticaPronostico
+Object.entries(estadisticas.conteoEstados).forEach(([estado, contador]) => {
+  encabezadosTablaEstadistica.innerHTML += `<th scope="col">Días ${estado}</th>`;
+  contenidoTablaEstadistica.innerHTML += `<td>${contador}</td>`;
+});
