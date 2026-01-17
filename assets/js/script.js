@@ -7,13 +7,16 @@ class WeatherApp {
   weather = [];
 
   constructor(lugares) {
+    // Representa todos los lugares que queramos mostrar en la app
     this.lugares = lugares;
   }
 
+  // Obtener datos del clima actual de las 5 ciudades
   fetchWeather() {
     this.weather = lugaresJson;
   }
 
+  // Para mostrar lugares en el index
   insertCardToDom(lugar) {
     console.log(lugar);
     const tarjeta = `
@@ -37,6 +40,7 @@ class WeatherApp {
     lugaresContainer.innerHTML += tarjeta;
   }
 
+  // Método que ejecuta petición a api y rellena el dom con respuesta de la api
   renderWeather() {
     this.fetchWeather();
     this.weather.forEach((ciudad) => {
@@ -45,6 +49,7 @@ class WeatherApp {
   }
 }
 
+// Instancia de clase weatherapp
 const app = new WeatherApp([
   'Santiago',
   'Arica',
@@ -54,6 +59,7 @@ const app = new WeatherApp([
   'Temuco',
 ]);
 
+// Ejecuta método principal de la clase
 app.renderWeather();
 
 // Manejo del DOM con JS
@@ -67,48 +73,3 @@ links.forEach(function (link) {
     link.classList.remove('active');
   }
 });
-
-// Manejo de Evento
-// var cardLinks = document.querySelectorAll('.card-link');
-// // console.log(cardLinks);
-// cardLinks.forEach(function (link) {
-//   link.addEventListener('click', function () {
-//     window.location.href = './detalle.html';
-//   });
-// });
-
-// Para agregar ícono dinámicamente dependiendo del estado actual del clima
-// const ICONOS = {
-//   Soleado: 'bi-brightness-high',
-//   Nublado: 'bi-cloudy-fill',
-//   Lluvioso: 'bi-cloud-rain-heavy',
-//   'Parcialmente nublado': 'bi-cloud-sun',
-// };
-
-// Mostrar lugares en el Index
-
-// const mostrarLugares = () => {
-//   lugares.forEach((lugar) => {
-//     const tarjeta = `
-//         <div class="col">
-//           <div class="card h-100 text-center">
-//             <i class="bi ${ICONOS[lugar.estadoActual]} card__icon"></i>
-//             <div class="card-body">
-//               <h5 class="card-title">${lugar.nombre}</h5>
-//               <p class="card-text">${lugar.tempActual}°C</p>
-//               <p class="card-text">${lugar.estadoActual}</p>
-//             </div>
-//             <div class="card-footer bg-transparent border-0">
-//               <a class="card-link" href="./detalle.html?id=${
-//                 lugar.id
-//               }">Ver detalle</a>
-//             </div>
-//           </div>
-//         </div>
-//     `;
-
-//     lugaresContainer.innerHTML += tarjeta;
-//   });
-// };
-
-// mostrarLugares();
